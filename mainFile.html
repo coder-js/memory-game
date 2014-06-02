@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+	<title>Pattern matching</title>
+	<head>
+		<link rel="stylesheet" type="text/css" href="cssFile.css">
+		<H1><center> Matching cards </center></H1>
+	</head>
+	<body><!--onload!="startClock()"-->
+		<h2><p id="check">match the cards asap!</p></h2>
+		
+		<center>
+		<table>
+			<tr>
+				<td><img src="pics\logo.jpg" onclick="changeImage(this,16);" name="pic1" width="75" height="75"></td>
+				<td><img src="pics\logo.jpg" onclick="changeImage(this,16);" name="pic8" width="75" height="75"></td>
+				<td><img src="pics\logo.jpg" onclick="changeImage(this,16);" name="pic6" width="75" height="75"></td>
+				<td><img src="pics\logo.jpg" onclick="changeImage(this,16);" name="pic2" width="75" height="75"></td>
+			</tr>
+			<tr>
+				<td><img src="pics\logo.jpg" onclick="changeImage(this,16);" name="pic4" width="75" height="75"></td>
+				<td><img src="pics\logo.jpg" onclick="changeImage(this,16);" name="pic8" width="75" height="75"></td>
+				<td><img src="pics\logo.jpg" onclick="changeImage(this,16);" name="pic1" width="75" height="75"></td>
+				<td><img src="pics\logo.jpg" onclick="changeImage(this,16);" name="pic7" width="75" height="75"></td>
+			</tr>
+			<tr>
+				<td><img src="pics\logo.jpg" onclick="changeImage(this,16);" name="pic2" width="75" height="75"></td>
+				<td><img src="pics\logo.jpg" onclick="changeImage(this,16);" name="pic5" width="75" height="75"></td>
+				<td><img src="pics\logo.jpg" onclick="changeImage(this,16);" name="pic3" width="75" height="75"></td>
+				<td><img src="pics\logo.jpg" onclick="changeImage(this,16);" name="pic3" width="75" height="75"></td>
+			</tr>
+			<tr>
+				<td><img src="pics\logo.jpg" onclick="changeImage(this,16);" name="pic6" width="75" height="75"></td>
+				<td><img src="pics\logo.jpg" onclick="changeImage(this,16);" name="pic5" width="75" height="75"></td>
+				<td><img src="pics\logo.jpg" onclick="changeImage(this,16);" name="pic7" width="75" height="75"></td>
+				<td><img src="pics\logo.jpg" onclick="changeImage(this,16);" name="pic4" width="75" height="75"></td>
+			</tr>
+		</table>
+		</center>
+		<br>
+		<h2><p id="print"></p></h2>
+		
+		<script type="text/javascript">
+			var flag=0, num=0;
+			//var start, end;
+			var img1, img2;
+			/*function startClock()
+			{
+					alert("starting...");
+					start = new Date();
+			}*/
+			function changeImage(img,n){
+				//alert("clicked!");
+				document.getElementById("print").innerHTML = " ";
+				if(!img.src.match("logo"))
+				{
+					document.getElementById("print").innerHTML="this has already been selected...";
+				}	
+
+				else if(flag==0)
+				{
+					//alert("1st");
+					img1 = img;
+					img1.src="pics/"+img1.name+".jpg";
+					switch(img1.name){
+						case "pic1":
+									img1.src="pics/pic1.jpg";
+									break;
+						case "pic2":
+									img1.src="pics/pic2.jpg";
+									break;
+						case "pic3":
+									img1.src="pics/pic3.jpg";
+									break;
+						case "pic4":
+									img1.src="pics/pic4.jpg";
+									break;
+						case "pic5":
+									img1.src="pics/pic5.jpg";
+									break;
+						case "pic6":
+									img1.src="pics/pic6.jpg";
+									break;
+						case "pic7":
+									img1.src="pics/pic7.jpg";
+									break;
+						case "pic8":
+									img1.src="pics/pic8.jpg";
+									break;
+					}
+					flag=1;
+				}
+
+				else if(flag==1)
+				{
+					//alert("2nd");
+					img2=img;
+					img2.src="pics/"+img2.name+".jpg";
+					switch(img2.name){
+						case "pic1":
+									img2.src="pics/pic1.jpg";
+									break;
+						case "pic2":
+									img2.src="pics/pic2.jpg";
+									break;
+						case "pic3":
+									img2.src="pics/pic3.jpg";
+									break;
+						case "pic4":
+									img2.src="pics/pic4.jpg";
+									break;
+						case "pic5":
+									img2.src="pics/pic5.jpg";
+									break;
+						case "pic6":
+									img2.src="pics/pic6.jpg";
+									break;
+						case "pic7":
+									img2.src="pics/pic7.jpg";
+									break;
+						case "pic8":
+									img2.src="pics/pic8.jpg";
+									break;
+					}
+					
+					
+					window.setTimeout(function()
+					{
+						if((img1.src).localeCompare(img2.src)!=0)
+						{
+							document.getElementById("print").innerHTML="Mismatch!";
+							img1.src="pics/logo.jpg";
+							img2.src="pics/logo.jpg";
+						}
+						else
+						{
+							num=num+2;
+							document.getElementById("print").innerHTML="Match!"
+						}
+						if(num==n)
+						{
+							//end = new Date();
+							document.getElementById("print").innerHTML="<WELL DONE!!<br><center>GAME OVER!!</center>"; //+"<br>Time Taken: "+(end-start);
+						}
+						
+					},500);
+					flag=0;
+				}
+			}
+
+		</script>
+	</body>
+</html>
